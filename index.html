@@ -7,10 +7,10 @@
   <title>ProyectosIA — Automatización Empresarial con IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────── */
+    /* ─── Reset & Base ───────────────────────────────────────── */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -18,9 +18,12 @@
     }
 
     :root {
-      --orange:        #f97316;
-      --orange-dark:   #ea6c0a;
-      --orange-light:  #fff7ed;
+      --indigo:        #4F46E5;
+      --indigo-dark:   #4338CA;
+      --indigo-light:  #6366f1;
+      --indigo-50:     #eef2ff;
+      --indigo-100:    #e0e7ff;
+      --indigo-200:    #c7d2fe;
       --black:         #0f172a;
       --gray-900:      #1e293b;
       --gray-700:      #334155;
@@ -29,13 +32,14 @@
       --gray-100:      #f1f5f9;
       --gray-50:       #f9fafb;
       --white:         #ffffff;
-      --radius-sm:     8px;
+      --radius-sm:     6px;
       --radius-md:     12px;
       --radius-lg:     16px;
+      --radius-pill:   9999px;
       --shadow-sm:     0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
       --shadow-md:     0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
-      --shadow-lg:     0 12px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
-      --shadow-orange: 0 8px 32px rgba(249,115,22,.30);
+      --shadow-lg:     0 12px 48px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+      --shadow-indigo: 0 8px 32px rgba(79,70,229,.35);
       --nav-h:         68px;
       --max-w:         1200px;
       --transition:    0.22s ease;
@@ -48,259 +52,162 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--black);
       background: var(--white);
-      -webkit-font-smoothing: antialiased;
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { cursor: pointer; font-family: inherit; border: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    /* ─── Utility ───────────────────────────────────────────── */
+    /* ─── Contenedor global ──────────────────────────────────── */
     .container {
       width: 100%;
       max-width: var(--max-w);
       margin-inline: auto;
-      padding-inline: clamp(16px, 4vw, 48px);
+      padding-inline: clamp(16px, 5vw, 40px);
     }
 
-    .section {
-      padding-block: clamp(56px, 8vw, 112px);
-    }
-
-    .section--gray {
-      background: var(--gray-50);
-    }
-
-    .section__header {
-      text-align: center;
-      margin-bottom: clamp(36px, 5vw, 64px);
-    }
-
-    .section__title {
-      font-size: clamp(1.625rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-
-    .section__subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.125rem);
-      color: var(--gray-500);
-      max-width: 560px;
-      margin-inline: auto;
-      line-height: 1.65;
-    }
-
-    /* ─── Buttons ───────────────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 13px 24px;
-      border-radius: var(--radius-sm);
-      transition: all var(--transition);
-      min-height: 48px;
-      white-space: nowrap;
-      border: 2px solid transparent;
-    }
-
-    .btn--primary {
-      background: var(--orange);
-      color: var(--white);
-    }
-
-    .btn--primary:hover {
-      background: var(--orange-dark);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-orange);
-    }
-
-    .btn--primary:active {
-      transform: translateY(0);
-    }
-
-    .btn--outline {
-      background: var(--white);
-      color: var(--gray-700);
-      border-color: var(--gray-300);
-    }
-
-    .btn--outline:hover {
-      border-color: var(--gray-500);
-      color: var(--black);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn--white {
-      background: var(--white);
-      color: var(--orange);
-      font-weight: 700;
-    }
-
-    .btn--white:hover {
-      background: var(--orange-light);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.12);
-    }
-
-    .btn--lg {
-      font-size: 17px;
-      padding: 15px 32px;
-      min-height: 54px;
-    }
-
-    /* ─── Navbar ────────────────────────────────────────────── */
-    .navbar {
+    /* ─── NAVBAR ─────────────────────────────────────────────── */
+    .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 900;
+      z-index: 100;
       height: var(--nav-h);
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
-    .navbar.scrolled {
-      border-color: var(--gray-100);
-      box-shadow: 0 1px 20px rgba(0,0,0,.07);
-    }
-
-    .navbar__inner {
+    .nav__inner {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 100%;
+      gap: 16px;
     }
 
-    .navbar__logo {
+    /* Logo */
+    .nav__logo {
       display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.03em;
-      flex-shrink: 0;
-    }
-
-    .navbar__logo-dot {
-      width: 28px;
-      height: 28px;
-      background: var(--orange);
-      border-radius: 50%;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .navbar__logo-dot::after {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: rgba(255,255,255,0.5);
-      border-radius: 50%;
-      top: 5px;
-      left: 5px;
-    }
-
-    .navbar__links {
-      display: none;
       align-items: center;
       gap: 8px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      padding: 6px 14px 6px 8px;
+      border-radius: var(--radius-pill);
+      transition: background var(--transition);
     }
+    .nav__logo:hover { background: var(--indigo-50); }
 
-    .navbar__links a {
-      font-size: 14.5px;
-      font-weight: 500;
-      color: var(--gray-700);
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: color var(--transition), background var(--transition);
-    }
-
-    .navbar__links a:hover {
-      color: var(--black);
-      background: var(--gray-100);
-    }
-
-    .navbar__actions {
+    .nav__logo-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--indigo);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
     }
 
-    .navbar__login {
+    .nav__logo-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      white-space: nowrap;
+    }
+
+    /* Links de navegación (desktop) */
+    .nav__links {
       display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
+    @media (min-width: 1024px) {
+      .nav__links { display: flex; }
+    }
+
+    .nav__link {
       font-size: 14px;
       font-weight: 500;
       color: var(--gray-700);
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
       transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
     }
-
-    .navbar__login:hover {
+    .nav__link:hover {
       color: var(--black);
-      background: var(--gray-100);
+      background: var(--gray-50);
     }
 
-    /* Hamburger */
-    .navbar__hamburger {
+    /* CTA Navbar */
+    .nav__cta {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--indigo);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+      box-shadow: var(--shadow-indigo);
+    }
+    .nav__cta:hover {
+      background: var(--indigo-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(79,70,229,.45);
+    }
+
+    @media (min-width: 768px) {
+      .nav__cta { display: flex; }
+    }
+
+    /* Hamburger (mobile) */
+    .nav__burger {
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
       width: 44px;
       height: 44px;
-      background: transparent;
-      padding: 8px;
-      border-radius: var(--radius-sm);
+      padding: 10px;
+      border-radius: var(--radius-md);
       transition: background var(--transition);
     }
+    .nav__burger:hover { background: var(--gray-100); }
 
-    .navbar__hamburger:hover {
-      background: var(--gray-100);
-    }
-
-    .navbar__hamburger span {
+    .nav__burger span {
       display: block;
       height: 2px;
-      background: var(--black);
+      background: var(--gray-700);
       border-radius: 2px;
-      transition: all 0.25s ease;
-      transform-origin: center;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    .navbar__hamburger.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
+    @media (min-width: 1024px) {
+      .nav__burger { display: none; }
     }
 
-    .navbar__hamburger.active span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
+    /* Estado abierto del burger */
+    .nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__burger.is-open span:nth-child(2) { opacity: 0; }
+    .nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .navbar__hamburger.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile menu */
-    .navbar__mobile {
+    /* Menú móvil desplegable */
+    .nav__mobile {
       display: none;
       position: fixed;
       top: var(--nav-h);
@@ -308,377 +215,418 @@
       right: 0;
       background: var(--white);
       border-bottom: 1px solid var(--gray-100);
-      box-shadow: var(--shadow-lg);
       padding: 16px;
-      z-index: 899;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
     }
+    .nav__mobile.is-open { display: block; }
 
-    .navbar__mobile.open {
-      display: block;
-    }
-
-    .navbar__mobile a {
+    .nav__mobile-link {
       display: block;
       font-size: 15px;
       font-weight: 500;
       color: var(--gray-700);
       padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      transition: all var(--transition);
+      border-radius: var(--radius-md);
+      transition: background var(--transition), color var(--transition);
     }
+    .nav__mobile-link:hover { background: var(--gray-50); color: var(--black); }
 
-    .navbar__mobile a:hover {
-      color: var(--black);
-      background: var(--gray-50);
-    }
-
-    .navbar__mobile .btn {
-      width: 100%;
-      margin-top: 12px;
-    }
-
-    @media (min-width: 768px) {
-      .navbar__links { display: flex; }
-      .navbar__login { display: block; }
-      .navbar__hamburger { display: none; }
-    }
-
-    /* ─── Hero ──────────────────────────────────────────────── */
-    .hero {
-      padding-top: calc(var(--nav-h) + clamp(40px, 7vw, 96px));
-      padding-bottom: clamp(48px, 7vw, 96px);
-      overflow: hidden;
-    }
-
-    .hero__inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(36px, 5vw, 64px);
+    .nav__mobile-cta {
+      display: flex;
       align-items: center;
+      justify-content: center;
+      background: var(--indigo);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 20px;
+      border-radius: var(--radius-pill);
+      margin-top: 12px;
+      transition: background var(--transition);
+    }
+    .nav__mobile-cta:hover { background: var(--indigo-dark); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      padding-top: calc(var(--nav-h) + 60px);
+      padding-bottom: 0;
+      background:
+        radial-gradient(ellipse 90% 60% at 50% 100%, #c7d2fe 0%, #e0e7ff 25%, #f0f9ff 55%, #ffffff 75%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Shapes orgánicos SVG decorativos (simulan el bosque de getjusto) */
+    .hero__shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
     }
 
     .hero__content {
-      max-width: 620px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-inline: clamp(16px, 5vw, 40px);
+      width: 100%;
+      max-width: 800px;
+      margin-inline: auto;
     }
 
-    .hero__tag {
+    /* Badge pill */
+    .hero__badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--orange-light);
-      border: 1px solid #fed7aa;
-      color: var(--orange-dark);
-      font-size: 13px;
+      background: var(--indigo-50);
+      border: 1px solid var(--indigo-200);
+      color: var(--indigo);
+      font-size: clamp(12px, 2vw, 13px);
       font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      margin-bottom: clamp(20px, 4vw, 28px);
+      letter-spacing: 0.01em;
+    }
+    .hero__badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--indigo-light);
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    .hero__h1 {
-      font-size: clamp(2.25rem, 6vw, 3.75rem);
+    /* Headline */
+    .hero__headline {
+      font-size: clamp(36px, 8vw, 72px);
       font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
       color: var(--black);
-      letter-spacing: -0.04em;
-      line-height: 1.07;
-      margin-bottom: 20px;
+      margin-bottom: clamp(16px, 3vw, 20px);
+    }
+    .hero__headline em {
+      font-style: normal;
+      color: var(--indigo-light);
     }
 
-    .hero__h1 span {
-      color: var(--orange);
-    }
-
+    /* Subtítulo */
     .hero__subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 400;
       color: var(--gray-500);
-      line-height: 1.7;
-      margin-bottom: 32px;
+      line-height: 1.6;
       max-width: 520px;
+      margin-bottom: clamp(28px, 5vw, 40px);
     }
 
-    .hero__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .hero__trust {
-      font-size: 13px;
-      color: var(--gray-500);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 16px;
+    /* CTA principal */
+    .hero__cta {
+      display: inline-flex;
       align-items: center;
-    }
-
-    .hero__trust-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .hero__trust-item::before {
-      content: '✓';
-      color: var(--orange);
+      gap: 8px;
+      background: var(--indigo);
+      color: var(--white);
+      font-size: clamp(15px, 2vw, 17px);
       font-weight: 700;
+      padding: clamp(13px, 2vw, 16px) clamp(28px, 4vw, 40px);
+      border-radius: var(--radius-pill);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: var(--shadow-indigo);
     }
-
-    .hero__stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 40px;
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--gray-100);
+    .hero__cta:hover {
+      background: var(--indigo-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(79,70,229,.50);
     }
-
-    .hero__stat-number {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 900;
-      color: var(--black);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .hero__stat-number span {
-      color: var(--orange);
-    }
-
-    .hero__stat-label {
-      font-size: 13px;
-      color: var(--gray-500);
-      font-weight: 500;
-    }
+    .hero__cta:active { transform: translateY(0); }
 
     /* Dashboard mockup */
-    .hero__visual {
+    .hero__mockup-wrap {
       position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: clamp(320px, 90vw, 900px);
+      margin-top: clamp(40px, 6vw, 64px);
+      margin-inline: auto;
     }
 
     .hero__mockup {
-      background: linear-gradient(145deg, #fff7ed 0%, #ffffff 50%, #f0f9ff 100%);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-lg);
-      position: relative;
+      background: linear-gradient(145deg, #312e81 0%, #3730a3 30%, #4F46E5 70%, #6366f1 100%);
+      border-radius: clamp(12px, 2vw, 20px) clamp(12px, 2vw, 20px) 0 0;
+      padding: clamp(16px, 3vw, 28px);
+      box-shadow:
+        0 -4px 0 rgba(255,255,255,0.15) inset,
+        0 32px 80px rgba(79,70,229,0.35);
+      min-height: clamp(220px, 35vw, 420px);
       overflow: hidden;
-      min-height: 360px;
+      position: relative;
     }
 
-    .hero__mockup::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 240px;
-      height: 240px;
-      background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
+    /* Barra superior del mockup (barra de url simulada) */
     .mockup__topbar {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 20px;
+      margin-bottom: clamp(14px, 2.5vw, 22px);
     }
-
     .mockup__dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
+      opacity: 0.6;
+    }
+    .mockup__dot--red   { background: #ff5f57; }
+    .mockup__dot--yellow{ background: #febc2e; }
+    .mockup__dot--green { background: #28c840; }
+    .mockup__urlbar {
+      flex: 1;
+      height: 22px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 6px;
+      max-width: 240px;
+      margin-inline: auto;
     }
 
-    .mockup__dot--red   { background: #fc6b6b; }
-    .mockup__dot--yellow{ background: #fbbf24; }
-    .mockup__dot--green { background: #4ade80; }
-
-    .mockup__topbar-title {
-      margin-left: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray-500);
-    }
-
+    /* Grilla de contenido del mockup */
     .mockup__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 14px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(8px, 1.5vw, 14px);
+      margin-bottom: clamp(10px, 2vw, 16px);
     }
 
-    .mockup__card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
+    .mockup__stat {
+      background: rgba(255,255,255,0.12);
       border-radius: 10px;
-      padding: 14px;
-      box-shadow: var(--shadow-sm);
+      padding: clamp(10px, 1.5vw, 16px);
     }
-
-    .mockup__card-label {
-      font-size: 11px;
-      color: var(--gray-500);
-      font-weight: 500;
+    .mockup__stat-label {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: rgba(255,255,255,0.6);
       margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-weight: 500;
     }
-
-    .mockup__card-value {
-      font-size: 1.5rem;
+    .mockup__stat-value {
+      font-size: clamp(16px, 2.5vw, 24px);
       font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1;
     }
-
-    .mockup__card-value.orange { color: var(--orange); }
-
-    .mockup__card-delta {
-      font-size: 11px;
+    .mockup__stat-delta {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: #a5f3fc;
       font-weight: 600;
-      color: #22c55e;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
-    .mockup__bars {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 10px;
-      padding: 14px;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 14px;
+    /* Lista de automatizaciones en el mockup */
+    .mockup__list-title {
+      font-size: clamp(10px, 1.5vw, 13px);
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: clamp(8px, 1.5vw, 12px);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .mockup__bars-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray-700);
-      margin-bottom: 12px;
-    }
-
-    .bar-row {
+    .mockup__item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
+      gap: clamp(8px, 1.5vw, 12px);
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: clamp(8px, 1.2vw, 12px) clamp(10px, 1.5vw, 14px);
+      margin-bottom: 6px;
     }
-
-    .bar-row__label {
-      font-size: 11px;
-      color: var(--gray-500);
-      width: 90px;
+    .mockup__item-icon {
+      width: clamp(24px, 3.5vw, 32px);
+      height: clamp(24px, 3.5vw, 32px);
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(12px, 1.8vw, 16px);
       flex-shrink: 0;
     }
+    .mockup__item-info { flex: 1; min-width: 0; }
+    .mockup__item-name {
+      font-size: clamp(10px, 1.5vw, 13px);
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mockup__item-meta {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: rgba(255,255,255,0.5);
+    }
+    .mockup__badge {
+      font-size: clamp(8px, 1.1vw, 10px);
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+    }
+    .mockup__badge--active {
+      background: rgba(16,185,129,0.25);
+      color: #6ee7b7;
+    }
+    .mockup__badge--paused {
+      background: rgba(251,191,36,0.2);
+      color: #fcd34d;
+    }
+    .mockup__badge--running {
+      background: rgba(99,102,241,0.3);
+      color: #a5b4fc;
+    }
 
-    .bar-row__track {
+    /* Barra de progreso decorativa */
+    .mockup__progress-row {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 1vw, 10px);
+      margin-top: clamp(6px, 1.5vw, 12px);
+    }
+    .mockup__progress-label {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: rgba(255,255,255,0.55);
+      white-space: nowrap;
+      min-width: 60px;
+    }
+    .mockup__progress-bar {
       flex: 1;
-      height: 7px;
-      background: var(--gray-100);
-      border-radius: 100px;
+      height: 5px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
       overflow: hidden;
     }
-
-    .bar-row__fill {
+    .mockup__progress-fill {
       height: 100%;
-      background: var(--orange);
-      border-radius: 100px;
+      background: linear-gradient(90deg, #a5b4fc, #818cf8);
+      border-radius: 3px;
     }
-
-    .bar-row__fill--blue {
-      background: #60a5fa;
-    }
-
-    .bar-row__fill--green {
-      background: #4ade80;
-    }
-
-    .bar-row__pct {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--gray-700);
-      width: 28px;
+    .mockup__progress-pct {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: rgba(255,255,255,0.7);
+      font-weight: 700;
+      min-width: 28px;
       text-align: right;
     }
 
-    .mockup__badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .mockup__badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 100px;
-    }
-
-    .mockup__badge--green {
-      background: #dcfce7;
-      color: #16a34a;
-    }
-
-    .mockup__badge--orange {
-      background: #fff7ed;
-      color: var(--orange-dark);
-    }
-
-    .mockup__badge--blue {
-      background: #eff6ff;
-      color: #2563eb;
-    }
-
-    @media (min-width: 1024px) {
-      .hero__inner {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    /* ─── Social Proof Bar ──────────────────────────────────── */
-    .proof-bar {
+    /* ─── SOCIAL PROOF BAR ───────────────────────────────────── */
+    .social-proof {
       background: var(--gray-50);
-      border-block: 1px solid var(--gray-100);
-      padding-block: 32px;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      padding: clamp(24px, 4vw, 40px) 0;
     }
 
-    .proof-bar__label {
+    .social-proof__label {
       text-align: center;
-      font-size: 12px;
+      font-size: clamp(12px, 1.8vw, 13px);
       font-weight: 600;
+      color: var(--gray-500);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gray-400, #94a3b8);
-      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      margin-bottom: clamp(20px, 3vw, 28px);
     }
 
-    .proof-bar__logos {
+    .social-proof__logos {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       align-items: center;
-      gap: 16px 36px;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 16px) clamp(16px, 4vw, 48px);
     }
 
-    .proof-bar__logo {
-      font-size: clamp(14px, 2vw, 17px);
+    .social-proof__logo {
+      font-size: clamp(14px, 2vw, 16px);
       font-weight: 700;
-      color: #94a3b8;
+      color: var(--gray-300);
       letter-spacing: -0.02em;
       transition: color var(--transition);
     }
+    .social-proof__logo:hover { color: var(--gray-500); }
 
-    .proof-bar__logo:hover {
-      color: var(--gray-500);
+    .social-proof__sep {
+      color: var(--gray-300);
+      font-size: 16px;
     }
 
-    /* ─── Products / Features ───────────────────────────────── */
+    @media (max-width: 639px) {
+      .social-proof__sep { display: none; }
+    }
+
+    /* ─── PRODUCTOS / FEATURES ───────────────────────────────── */
+    .features {
+      padding: clamp(64px, 10vw, 112px) 0;
+      background: var(--white);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--indigo-50);
+      color: var(--indigo);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--indigo-200);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--indigo-light);
+    }
+
+    .section-subtitle {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--gray-500);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    .section-header {
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+
     .features__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: clamp(16px, 2.5vw, 24px);
+    }
+
+    @media (min-width: 640px) {
+      .features__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .features__grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .feature-card {
@@ -686,211 +634,171 @@
       border: 1px solid var(--gray-100);
       border-radius: var(--radius-lg);
       padding: clamp(20px, 3vw, 32px);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
     }
-
     .feature-card:hover {
-      transform: translateY(-4px);
       box-shadow: var(--shadow-md);
-      border-color: #fed7aa;
+      transform: translateY(-3px);
+      border-color: var(--indigo-200);
     }
 
     .feature-card__icon {
-      font-size: 2.25rem;
-      margin-bottom: 16px;
-      display: block;
-      line-height: 1;
+      width: clamp(44px, 6vw, 56px);
+      height: clamp(44px, 6vw, 56px);
+      background: var(--indigo-50);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(20px, 3vw, 26px);
+      margin-bottom: clamp(14px, 2vw, 20px);
     }
 
     .feature-card__title {
-      font-size: 1.0625rem;
+      font-size: clamp(16px, 2vw, 18px);
       font-weight: 700;
       color: var(--black);
       margin-bottom: 8px;
-      letter-spacing: -0.02em;
+      line-height: 1.3;
     }
 
     .feature-card__desc {
-      font-size: 14.5px;
+      font-size: clamp(14px, 1.5vw, 15px);
       color: var(--gray-500);
       line-height: 1.65;
     }
 
-    @media (min-width: 640px) {
-      .features__grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    /* ─── PRICING ─────────────────────────────────────────────── */
+    .pricing {
+      padding: clamp(64px, 10vw, 112px) 0;
+      background: var(--gray-50);
     }
 
-    @media (min-width: 1024px) {
-      .features__grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* ─── Why / Numbers ─────────────────────────────────────── */
-    .numbers__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .number-card {
-      text-align: center;
-      padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 32px);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius-lg);
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .number-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .number-card__value {
-      font-size: clamp(2.75rem, 7vw, 4rem);
-      font-weight: 900;
-      color: var(--orange);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .number-card__title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-
-    .number-card__desc {
-      font-size: 14px;
-      color: var(--gray-500);
-      line-height: 1.6;
-    }
-
-    @media (min-width: 640px) {
-      .numbers__grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* ─── Pricing ───────────────────────────────────────────── */
     .pricing__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: clamp(16px, 2vw, 20px);
       align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .pricing__grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+      }
     }
 
     .pricing-card {
       background: var(--white);
-      border: 1px solid var(--gray-200, #e2e8f0);
+      border: 1.5px solid var(--gray-100);
       border-radius: var(--radius-lg);
-      padding: clamp(24px, 3.5vw, 36px);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition);
+      padding: clamp(24px, 3vw, 36px);
+      position: relative;
+      transition: box-shadow var(--transition), transform var(--transition);
     }
-
     .pricing-card:hover {
-      transform: translateY(-4px);
       box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
 
     .pricing-card--featured {
-      border: 2px solid var(--orange);
-      box-shadow: var(--shadow-orange);
-      position: relative;
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 1px var(--indigo), var(--shadow-indigo);
     }
-
     .pricing-card--featured:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(249,115,22,.35);
+      box-shadow: 0 0 0 1px var(--indigo), 0 16px 60px rgba(79,70,229,.40);
     }
 
-    .pricing-card__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--orange);
+    @media (min-width: 768px) {
+      .pricing-card--featured { transform: scale(1.03); }
+      .pricing-card--featured:hover { transform: scale(1.03) translateY(-2px); }
+    }
+
+    .pricing-card__popular {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--indigo);
       color: var(--white);
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .pricing-card__tier {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 8px;
     }
 
     .pricing-card__name {
-      font-size: 1.125rem;
+      font-size: clamp(20px, 2.5vw, 24px);
       font-weight: 800;
       color: var(--black);
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
+      margin-bottom: 4px;
     }
 
     .pricing-card__desc {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--gray-500);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       line-height: 1.5;
     }
 
     .pricing-card__price {
-      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+
+    .pricing-card__currency {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-500);
+      padding-bottom: 4px;
     }
 
     .pricing-card__amount {
-      font-size: clamp(1.875rem, 4vw, 2.5rem);
+      font-size: clamp(36px, 5vw, 44px);
       font-weight: 900;
       color: var(--black);
-      letter-spacing: -0.04em;
       line-height: 1;
-    }
-
-    .pricing-card__amount .currency {
-      font-size: 1.125rem;
-      font-weight: 700;
-      vertical-align: top;
-      margin-top: 6px;
-      display: inline-block;
-      color: var(--gray-500);
+      letter-spacing: -0.03em;
     }
 
     .pricing-card__period {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--gray-500);
-      margin-top: 4px;
+      padding-bottom: 6px;
     }
 
-    .pricing-card__custom {
-      font-size: clamp(1.5rem, 3vw, 2rem);
+    .pricing-card__amount--custom {
+      font-size: clamp(24px, 3.5vw, 32px);
       font-weight: 900;
       color: var(--black);
-      letter-spacing: -0.03em;
+      line-height: 1.1;
     }
 
     .pricing-card__divider {
       height: 1px;
       background: var(--gray-100);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .pricing-card__features {
+      margin-bottom: 28px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 28px;
     }
 
     .pricing-card__feature {
@@ -899,962 +807,804 @@
       gap: 10px;
       font-size: 14px;
       color: var(--gray-700);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .pricing-card__feature-check {
-      flex-shrink: 0;
+    .pricing-card__check {
       width: 18px;
       height: 18px;
-      background: #dcfce7;
+      background: var(--indigo-50);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      margin-top: 1px;
-    }
-
-    .pricing-card--featured .pricing-card__feature-check {
-      background: var(--orange-light);
-    }
-
-    .pricing-card__cta {
-      width: 100%;
-      text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      .pricing__grid {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-      }
-
-      .pricing-card--featured {
-        transform: scale(1.02);
-      }
-
-      .pricing-card--featured:hover {
-        transform: scale(1.02) translateY(-6px);
-      }
-    }
-
-    /* ─── Testimonials ──────────────────────────────────────── */
-    .testimonials__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius-lg);
-      padding: clamp(20px, 3vw, 32px);
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .testimonial-card__stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-      font-size: 14px;
-    }
-
-    .testimonial-card__quote {
-      font-size: 15.5px;
-      color: var(--gray-700);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-
-    .testimonial-card__quote::before {
-      content: '\201C';
-      color: var(--orange);
-      font-size: 2rem;
-      line-height: 0;
-      vertical-align: -12px;
-      margin-right: 3px;
-      font-style: normal;
-    }
-
-    .testimonial-card__quote::after {
-      content: '\201D';
-      color: var(--orange);
-      font-size: 2rem;
-      line-height: 0;
-      vertical-align: -12px;
-      margin-left: 3px;
-      font-style: normal;
-    }
-
-    .testimonial-card__author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-top: 1px solid var(--gray-100);
-      padding-top: 16px;
-    }
-
-    .testimonial-card__avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange) 0%, #fb923c 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--white);
       flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 10px;
+      color: var(--indigo);
     }
 
-    .testimonial-card__name {
-      font-size: 14px;
+    .pricing-card__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
       font-weight: 700;
-      color: var(--black);
-      margin-bottom: 2px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
     }
 
-    .testimonial-card__role {
-      font-size: 12.5px;
-      color: var(--gray-500);
+    .pricing-card__btn--primary {
+      background: var(--indigo);
+      color: var(--white);
+      box-shadow: var(--shadow-indigo);
+    }
+    .pricing-card__btn--primary:hover {
+      background: var(--indigo-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(79,70,229,.45);
     }
 
-    @media (min-width: 640px) {
-      .testimonials__grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    .pricing-card__btn--ghost {
+      background: var(--white);
+      color: var(--indigo);
+      border: 1.5px solid var(--indigo-200);
+    }
+    .pricing-card__btn--ghost:hover {
+      background: var(--indigo-50);
+      border-color: var(--indigo);
     }
 
-    @media (min-width: 1024px) {
-      .testimonials__grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* ─── CTA Final ─────────────────────────────────────────── */
+    /* ─── CTA FINAL ──────────────────────────────────────────── */
     .cta-section {
-      background: var(--orange);
-      padding-block: clamp(56px, 8vw, 96px);
+      background: var(--indigo);
+      padding: clamp(64px, 10vw, 112px) 0;
       position: relative;
       overflow: hidden;
     }
 
-    .cta-section::before {
-      content: '';
+    .cta-section__bg {
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 360px;
-      height: 360px;
-      background: rgba(255,255,255,.08);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -60px;
-      width: 280px;
-      height: 280px;
-      background: rgba(255,255,255,.06);
-      border-radius: 50%;
+      inset: 0;
       pointer-events: none;
     }
 
     .cta-section__inner {
-      text-align: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      text-align: center;
     }
 
     .cta-section__title {
-      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-size: clamp(28px, 5vw, 52px);
       font-weight: 900;
       color: var(--white);
-      letter-spacing: -0.04em;
       line-height: 1.1;
-      margin-bottom: 18px;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
     }
 
     .cta-section__subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.125rem);
-      color: rgba(255,255,255,.88);
-      max-width: 520px;
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      max-width: 500px;
       margin-inline: auto;
-      line-height: 1.65;
-      margin-bottom: 36px;
+      margin-bottom: clamp(28px, 4vw, 40px);
     }
 
-    .cta-section__trust {
-      margin-top: 16px;
-      font-size: 13px;
-      color: rgba(255,255,255,.75);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px 16px;
+    .cta-section__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--indigo);
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 700;
+      padding: clamp(13px, 2vw, 16px) clamp(28px, 4vw, 40px);
+      border-radius: var(--radius-pill);
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .cta-section__btn:hover {
+      background: var(--indigo-50);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
     }
 
-    /* ─── Footer ────────────────────────────────────────────── */
+    /* Círculos decorativos del CTA */
+    .cta-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
     .footer {
       background: var(--black);
-      color: rgba(255,255,255,.6);
-      padding-top: clamp(48px, 7vw, 80px);
-      padding-bottom: 32px;
+      padding: clamp(48px, 8vw, 80px) 0 clamp(24px, 4vw, 40px);
     }
 
     .footer__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 36px;
-      margin-bottom: 48px;
+      gap: clamp(32px, 4vw, 48px);
+      margin-bottom: clamp(40px, 6vw, 64px);
     }
 
-    .footer__logo {
+    @media (min-width: 640px) {
+      .footer__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+
+    .footer__brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--indigo);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.03em;
+      justify-content: center;
+      font-size: 18px;
       margin-bottom: 12px;
     }
 
-    .footer__logo-dot {
-      width: 26px;
-      height: 26px;
-      background: var(--orange);
-      border-radius: 50%;
-      flex-shrink: 0;
+    .footer__brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
     }
 
     .footer__brand-desc {
       font-size: 14px;
+      color: rgba(255,255,255,0.45);
       line-height: 1.65;
+      max-width: 280px;
       margin-bottom: 20px;
-      max-width: 260px;
-    }
-
-    .footer__socials {
-      display: flex;
-      gap: 12px;
     }
 
     .footer__social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer__social-link {
       width: 36px;
       height: 36px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all var(--transition);
+      font-size: 16px;
+      transition: background var(--transition);
     }
-
-    .footer__social:hover {
-      background: var(--orange);
-      border-color: var(--orange);
-    }
-
-    .footer__social svg {
-      width: 16px;
-      height: 16px;
-      fill: rgba(255,255,255,.8);
-    }
+    .footer__social-link:hover { background: rgba(255,255,255,0.15); }
 
     .footer__col-title {
       font-size: 13px;
       font-weight: 700;
-      color: var(--white);
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
       margin-bottom: 16px;
     }
 
-    .footer__links {
+    .footer__col-links {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .footer__links a {
+    .footer__col-link {
       font-size: 14px;
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,0.45);
       transition: color var(--transition);
     }
-
-    .footer__links a:hover {
-      color: var(--white);
-    }
-
-    .footer__divider {
-      height: 1px;
-      background: rgba(255,255,255,.07);
-      margin-bottom: 24px;
-    }
+    .footer__col-link:hover { color: rgba(255,255,255,0.85); }
 
     .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: clamp(20px, 3vw, 28px);
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer__copy {
       font-size: 13px;
-      text-align: center;
-      color: rgba(255,255,255,.38);
+      color: rgba(255,255,255,0.35);
     }
 
-    @media (min-width: 640px) {
-      .footer__grid {
-        grid-template-columns: 1fr 1fr;
+    .footer__bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer__bottom-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      transition: color var(--transition);
+    }
+    .footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
+
+    /* ─── Utilidades ─────────────────────────────────────────── */
+    .text-center { text-align: center; }
+    .mt-2  { margin-top: 8px; }
+    .mt-4  { margin-top: 16px; }
+
+    /* ─── Animaciones de entrada ─────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (min-width: 1024px) {
-      .footer__grid {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-      }
-    }
-
-    /* ─── Focus visible ─────────────────────────────────────── */
-    :focus-visible {
-      outline: 2px solid var(--orange);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    /* ─── Reduced motion ────────────────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
-  <header class="navbar" id="navbar" role="banner">
-    <div class="container">
-      <nav class="navbar__inner" role="navigation" aria-label="Navegación principal">
+  <!-- ── NAVBAR ─────────────────────────────────────────────── -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
 
-        <a href="#" class="navbar__logo" aria-label="ProyectosIA — Inicio">
-          <div class="navbar__logo-dot" aria-hidden="true"></div>
-          ProyectosIA
-        </a>
+      <!-- Logo -->
+      <a href="#" class="nav__logo" aria-label="ProyectosIA — Inicio">
+        <span class="nav__logo-icon" aria-hidden="true">⚡</span>
+        <span class="nav__logo-text">ProyectosIA</span>
+      </a>
 
-        <ul class="navbar__links" role="list">
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#soluciones">Soluciones</a></li>
-          <li><a href="#precios">Precios</a></li>
-          <li><a href="#empresa">Empresa</a></li>
-        </ul>
-
-        <div class="navbar__actions">
-          <a href="#" class="navbar__login">Iniciar sesión</a>
-          <a href="#" class="btn btn--primary" style="font-size:14px;padding:10px 20px;min-height:40px;">
-            Empezar gratis
-          </a>
-          <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
+      <!-- Links desktop -->
+      <nav class="nav__links" aria-label="Navegación principal">
+        <a href="#productos" class="nav__link">Soluciones ▾</a>
+        <a href="#productos" class="nav__link">Productos ▾</a>
+        <a href="#precios"   class="nav__link">Precios</a>
+        <a href="#"          class="nav__link">ProyectosIA AI</a>
+        <a href="#"          class="nav__link">Para empresas</a>
+        <a href="#footer"    class="nav__link">Contacto</a>
       </nav>
+
+      <!-- CTA desktop -->
+      <a href="#precios" class="nav__cta" aria-label="Ir a planes de precio">
+        Haz crecer tu empresa ›
+      </a>
+
+      <!-- Hamburger mobile -->
+      <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile menu -->
-  <div class="navbar__mobile" id="mobile-menu" role="navigation" aria-label="Menú móvil">
-    <a href="#productos" onclick="closeMobile()">Productos</a>
-    <a href="#soluciones" onclick="closeMobile()">Soluciones</a>
-    <a href="#precios" onclick="closeMobile()">Precios</a>
-    <a href="#empresa" onclick="closeMobile()">Empresa</a>
-    <a href="#" class="btn btn--outline">Iniciar sesión</a>
-    <a href="#" class="btn btn--primary">Empezar gratis</a>
+  <!-- Menú móvil desplegable -->
+  <div class="nav__mobile" id="navMobile" role="navigation" aria-label="Menú móvil">
+    <a href="#productos" class="nav__mobile-link">Soluciones</a>
+    <a href="#productos" class="nav__mobile-link">Productos</a>
+    <a href="#precios"   class="nav__mobile-link">Precios</a>
+    <a href="#"          class="nav__mobile-link">ProyectosIA AI</a>
+    <a href="#"          class="nav__mobile-link">Para empresas</a>
+    <a href="#footer"    class="nav__mobile-link">Contacto</a>
+    <a href="#precios" class="nav__mobile-cta">Haz crecer tu empresa ›</a>
   </div>
 
 
+  <!-- ── HERO ───────────────────────────────────────────────── -->
   <main>
+  <section class="hero" aria-labelledby="hero-headline">
 
-    <!-- ════════════════════════════════ HERO ════════════════════════════════ -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <div class="hero__inner">
+    <!-- Shapes orgánicos decorativos (simulan formas del bosque de getjusto) -->
+    <div class="hero__shapes" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Forma izquierda — árbol/colina orgánica -->
+        <ellipse cx="160" cy="720" rx="280" ry="340" fill="#e0e7ff" opacity="0.45"/>
+        <ellipse cx="80"  cy="680" rx="160" ry="220" fill="#c7d2fe" opacity="0.30"/>
+        <!-- Forma derecha -->
+        <ellipse cx="1300" cy="740" rx="260" ry="320" fill="#e0e7ff" opacity="0.45"/>
+        <ellipse cx="1380" cy="700" rx="160" ry="200" fill="#c7d2fe" opacity="0.28"/>
+        <!-- Centro suave -->
+        <ellipse cx="720" cy="780" rx="460" ry="200" fill="#ddd6fe" opacity="0.18"/>
+        <!-- Detalles superiores -->
+        <ellipse cx="380" cy="400" rx="120" ry="180" fill="#e0e7ff" opacity="0.20"/>
+        <ellipse cx="1060" cy="360" rx="100" ry="160" fill="#e0e7ff" opacity="0.20"/>
+      </svg>
+    </div>
 
-          <!-- Texto -->
-          <div class="hero__content">
-            <div class="hero__tag" role="note">
-              <span aria-hidden="true">🚀</span>
-              Nuevo &middot; Agentes IA con memoria persistente
-            </div>
+    <!-- Contenido del hero -->
+    <div class="hero__content">
+      <!-- Badge pill -->
+      <div class="hero__badge" role="note">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        La plataforma que todas las empresas necesitan
+      </div>
 
-            <h1 class="hero__h1" id="hero-heading">
-              Automatiza tu empresa.<br>
-              <span>Resultados en semanas.</span>
-            </h1>
+      <!-- Headline principal -->
+      <h1 class="hero__headline" id="hero-headline">
+        La solución con <em>IA</em><br>
+        que tu empresa necesita
+      </h1>
 
-            <p class="hero__subtitle">
-              Conectamos tus sistemas, automatizamos procesos y ponemos la IA
-              a trabajar por tu negocio. Sin freelancers eternos.
-              Sin esperas de meses.
-            </p>
+      <!-- Subtítulo -->
+      <p class="hero__subtitle">
+        Con ProyectosIA, tienes un ecosistema completo para automatizar tu negocio.
+      </p>
 
-            <div class="hero__buttons">
-              <a href="#" class="btn btn--primary btn--lg" aria-label="Empezar gratis sin tarjeta de crédito">
-                Empezar gratis &rarr;
-              </a>
-              <a href="#" class="btn btn--outline btn--lg">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                Ver demo
-              </a>
-            </div>
+      <!-- CTA principal -->
+      <a href="#precios" class="hero__cta" role="button">
+        Quiero ProyectosIA ›
+      </a>
+    </div>
 
-            <ul class="hero__trust" role="list" aria-label="Garantías">
-              <li class="hero__trust-item">Sin tarjeta de crédito</li>
-              <li class="hero__trust-item">Setup en 1 día</li>
-              <li class="hero__trust-item">Soporte en español</li>
-            </ul>
+    <!-- Dashboard mockup -->
+    <div class="hero__mockup-wrap" aria-hidden="true">
+      <div class="hero__mockup" role="img" aria-label="Captura del panel de automatizaciones de ProyectosIA">
 
-            <!-- Stats -->
-            <div class="hero__stats" role="list" aria-label="Métricas clave">
-              <div role="listitem">
-                <div class="hero__stat-number">500<span>+</span></div>
-                <div class="hero__stat-label">Empresas automatizadas</div>
-              </div>
-              <div role="listitem">
-                <div class="hero__stat-number"><span>80</span>%</div>
-                <div class="hero__stat-label">Reducción tareas manuales</div>
-              </div>
-              <div role="listitem">
-                <div class="hero__stat-number">3 <span style="font-size:1.5rem">sem</span></div>
-                <div class="hero__stat-label">Hasta primera automatización</div>
-              </div>
-            </div>
+        <!-- Barra superior -->
+        <div class="mockup__topbar">
+          <span class="mockup__dot mockup__dot--red"></span>
+          <span class="mockup__dot mockup__dot--yellow"></span>
+          <span class="mockup__dot mockup__dot--green"></span>
+          <div class="mockup__urlbar"></div>
+        </div>
+
+        <!-- Stats 3 columnas -->
+        <div class="mockup__grid">
+          <div class="mockup__stat">
+            <div class="mockup__stat-label">Automatizaciones</div>
+            <div class="mockup__stat-value">1,247</div>
+            <div class="mockup__stat-delta">+18% este mes</div>
           </div>
-
-          <!-- Visual -->
-          <div class="hero__visual" aria-hidden="true">
-            <div class="hero__mockup" role="img" aria-label="Vista previa del panel de ProyectosIA">
-              <div class="mockup__topbar">
-                <div class="mockup__dot mockup__dot--red"></div>
-                <div class="mockup__dot mockup__dot--yellow"></div>
-                <div class="mockup__dot mockup__dot--green"></div>
-                <span class="mockup__topbar-title">Panel &mdash; ProyectosIA</span>
-              </div>
-
-              <div class="mockup__grid">
-                <div class="mockup__card">
-                  <div class="mockup__card-label">Automatizaciones</div>
-                  <div class="mockup__card-value orange">48</div>
-                  <div class="mockup__card-delta">+12 este mes</div>
-                </div>
-                <div class="mockup__card">
-                  <div class="mockup__card-label">Horas ahorradas</div>
-                  <div class="mockup__card-value">2.840</div>
-                  <div class="mockup__card-delta">+340 esta semana</div>
-                </div>
-              </div>
-
-              <div class="mockup__bars">
-                <div class="mockup__bars-title">Rendimiento por área</div>
-                <div class="bar-row">
-                  <span class="bar-row__label">Ventas</span>
-                  <div class="bar-row__track"><div class="bar-row__fill" style="width:87%"></div></div>
-                  <span class="bar-row__pct">87%</span>
-                </div>
-                <div class="bar-row">
-                  <span class="bar-row__label">Logística</span>
-                  <div class="bar-row__track"><div class="bar-row__fill bar-row__fill--blue" style="width:72%"></div></div>
-                  <span class="bar-row__pct">72%</span>
-                </div>
-                <div class="bar-row">
-                  <span class="bar-row__label">Finanzas</span>
-                  <div class="bar-row__track"><div class="bar-row__fill bar-row__fill--green" style="width:91%"></div></div>
-                  <span class="bar-row__pct">91%</span>
-                </div>
-              </div>
-
-              <div class="mockup__badges">
-                <span class="mockup__badge mockup__badge--green">&#10003; 12 flujos activos</span>
-                <span class="mockup__badge mockup__badge--orange">Motor de IA activo</span>
-                <span class="mockup__badge mockup__badge--blue">CRM conectado</span>
-              </div>
-            </div>
+          <div class="mockup__stat">
+            <div class="mockup__stat-label">Horas ahorradas</div>
+            <div class="mockup__stat-value">8,930</div>
+            <div class="mockup__stat-delta">+34% este mes</div>
           </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ════════════════════════════ SOCIAL PROOF ════════════════════════════ -->
-    <section class="proof-bar" aria-label="Empresas que confían en ProyectosIA">
-      <div class="container">
-        <p class="proof-bar__label">Empresas que ya automatizan con ProyectosIA</p>
-        <div class="proof-bar__logos" role="list">
-          <span class="proof-bar__logo" role="listitem">Falabella</span>
-          <span class="proof-bar__logo" role="listitem">Copec</span>
-          <span class="proof-bar__logo" role="listitem">Sodimac</span>
-          <span class="proof-bar__logo" role="listitem">BancoEstado</span>
-          <span class="proof-bar__logo" role="listitem">CMR</span>
-          <span class="proof-bar__logo" role="listitem">Entel</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ════════════════════════════ PRODUCTOS ════════════════════════════ -->
-    <section class="section section--gray" id="productos" aria-labelledby="productos-title">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="productos-title">Todo lo que necesitas para automatizar</h2>
-          <p class="section__subtitle">Una plataforma completa, sin piezas sueltas.</p>
-        </header>
-
-        <div class="features__grid" role="list">
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">🤖</span>
-            <h3 class="feature-card__title">Agentes de IA</h3>
-            <p class="feature-card__desc">Automatiza conversaciones y decisiones complejas con IA que aprende de tu negocio y mejora con cada interacción.</p>
-          </article>
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">🔗</span>
-            <h3 class="feature-card__title">200+ Integraciones</h3>
-            <p class="feature-card__desc">Conecta tu CRM, ERP, ecommerce y contabilidad en minutos. Sin escribir código y sin conocimientos técnicos.</p>
-          </article>
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">⚡</span>
-            <h3 class="feature-card__title">Flujos sin código</h3>
-            <p class="feature-card__desc">Diseña automatizaciones visuales con drag &amp; drop. Si puedes imaginarlo, puedes construirlo en minutos.</p>
-          </article>
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">📊</span>
-            <h3 class="feature-card__title">Analytics de ROI</h3>
-            <p class="feature-card__desc">Ve en tiempo real cuánto tiempo y dinero ahorras. Reportes automáticos para justificar la inversión con datos.</p>
-          </article>
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">🔒</span>
-            <h3 class="feature-card__title">Seguridad Enterprise</h3>
-            <p class="feature-card__desc">SOC 2, cifrado end-to-end y control de accesos avanzado. Tus datos siempre protegidos y bajo tu control.</p>
-          </article>
-
-          <article class="feature-card" role="listitem">
-            <span class="feature-card__icon" aria-hidden="true">🌐</span>
-            <h3 class="feature-card__title">API REST pública</h3>
-            <p class="feature-card__desc">Integra ProyectosIA en tus propios sistemas. Documentación completa, SDKs y webhooks para máxima flexibilidad.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ════════════════════════════ POR QUÉ ════════════════════════════ -->
-    <section class="section" id="soluciones" aria-labelledby="soluciones-title">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="soluciones-title">&iquest;Por qu&eacute; ProyectosIA?</h2>
-          <p class="section__subtitle">N&uacute;meros reales de empresas que ya automatizaron con nosotros.</p>
-        </header>
-
-        <div class="numbers__grid" role="list">
-
-          <div class="number-card" role="listitem">
-            <div class="number-card__value" aria-label="10 veces">10x</div>
-            <div class="number-card__title">M&aacute;s r&aacute;pido que desarrollo a medida</div>
-            <div class="number-card__desc">Implementamos en semanas lo que un equipo de desarrollo tardar&iacute;a meses en construir desde cero.</div>
-          </div>
-
-          <div class="number-card" role="listitem">
-            <div class="number-card__value" aria-label="80 por ciento">80%</div>
-            <div class="number-card__title">Reducci&oacute;n en tareas manuales</div>
-            <div class="number-card__desc">Nuestros clientes eliminan en promedio el 80% de las tareas repetitivas en sus primeras automatizaciones.</div>
-          </div>
-
-          <div class="number-card" role="listitem">
-            <div class="number-card__value" aria-label="3 semanas">3 sem</div>
-            <div class="number-card__title">Promedio de implementaci&oacute;n</div>
-            <div class="number-card__desc">De la primera reuni&oacute;n a la primera automatizaci&oacute;n en producci&oacute;n. Resultados reales en tiempo r&eacute;cord.</div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ════════════════════════════ PRICING ════════════════════════════ -->
-    <section class="section section--gray" id="precios" aria-labelledby="precios-title">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="precios-title">Planes para cada etapa</h2>
-          <p class="section__subtitle">Sin costos ocultos. Cancela cuando quieras.</p>
-        </header>
-
-        <div class="pricing__grid" role="list">
-
-          <!-- Starter -->
-          <article class="pricing-card" role="listitem" aria-label="Plan Starter">
-            <div class="pricing-card__name">Starter</div>
-            <div class="pricing-card__desc">Para equipos que est&aacute;n empezando con automatizaci&oacute;n.</div>
-            <div class="pricing-card__price">
-              <div class="pricing-card__amount">
-                <span class="currency">$</span>49.990
-              </div>
-              <div class="pricing-card__period">por mes, sin IVA</div>
-            </div>
-            <div class="pricing-card__divider"></div>
-            <ul class="pricing-card__features" role="list">
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                5 automatizaciones activas
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                10.000 ejecuciones al mes
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Soporte por email (48h)
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Integraciones b&aacute;sicas (20+)
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Panel de Analytics b&aacute;sico
-              </li>
-            </ul>
-            <a href="#" class="btn btn--outline pricing-card__cta">Empezar con Starter</a>
-          </article>
-
-          <!-- Business (Featured) -->
-          <article class="pricing-card pricing-card--featured" role="listitem" aria-label="Plan Business, el más popular">
-            <div class="pricing-card__badge">&#11088; M&Aacute;S POPULAR</div>
-            <div class="pricing-card__name" style="color:var(--orange)">Business</div>
-            <div class="pricing-card__desc">Para empresas que quieren automatizar en serio.</div>
-            <div class="pricing-card__price">
-              <div class="pricing-card__amount">
-                <span class="currency">$</span>129.990
-              </div>
-              <div class="pricing-card__period">por mes, sin IVA</div>
-            </div>
-            <div class="pricing-card__divider"></div>
-            <ul class="pricing-card__features" role="list">
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                Automatizaciones ilimitadas
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                100.000 ejecuciones al mes
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                Soporte 24/7 (chat + tel&eacute;fono)
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                Agentes de IA con memoria
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                Todas las integraciones (200+)
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true" style="background:var(--orange-light)">&#10003;</span>
-                Motor de IA avanzado
-              </li>
-            </ul>
-            <a href="#" class="btn btn--primary pricing-card__cta">Empezar con Business</a>
-          </article>
-
-          <!-- Enterprise -->
-          <article class="pricing-card" role="listitem" aria-label="Plan Enterprise">
-            <div class="pricing-card__name">Enterprise</div>
-            <div class="pricing-card__desc">Para grandes empresas con necesidades avanzadas.</div>
-            <div class="pricing-card__price">
-              <div class="pricing-card__custom">Precio a medida</div>
-              <div class="pricing-card__period">seg&uacute;n tus necesidades</div>
-            </div>
-            <div class="pricing-card__divider"></div>
-            <ul class="pricing-card__features" role="list">
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Todo lo de Business incluido
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                SLA dedicado con penalidades
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Implementaci&oacute;n guiada por expertos
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                SSO / SAML enterprise
-              </li>
-              <li class="pricing-card__feature">
-                <span class="pricing-card__feature-check" aria-hidden="true">&#10003;</span>
-                Facturaci&oacute;n personalizada
-              </li>
-            </ul>
-            <a href="#" class="btn btn--outline pricing-card__cta">Hablar con ventas</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════ TESTIMONIOS ═══════════════════════════ -->
-    <section class="section" aria-labelledby="testimonios-title">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="testimonios-title">Lo que dicen nuestros clientes</h2>
-          <p class="section__subtitle">Resultados reales de empresas chilenas que ya automatizaron.</p>
-        </header>
-
-        <div class="testimonials__grid" role="list">
-
-          <article class="testimonial-card" role="listitem">
-            <div class="testimonial-card__stars" aria-label="5 de 5 estrellas">
-              &#9733;&#9733;&#9733;&#9733;&#9733;
-            </div>
-            <blockquote class="testimonial-card__quote">
-              ProyectosIA redujo nuestro tiempo de onboarding de clientes de 3 d&iacute;as a 2 horas. El impacto en satisfacci&oacute;n fue inmediato y medible.
-            </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true">CM</div>
-              <div>
-                <div class="testimonial-card__name">Carolina M.</div>
-                <div class="testimonial-card__role">Gerenta de Operaciones &mdash; Empresa Log&iacute;stica</div>
-              </div>
-            </footer>
-          </article>
-
-          <article class="testimonial-card" role="listitem">
-            <div class="testimonial-card__stars" aria-label="5 de 5 estrellas">
-              &#9733;&#9733;&#9733;&#9733;&#9733;
-            </div>
-            <blockquote class="testimonial-card__quote">
-              Implementamos 12 automatizaciones en el primer mes. El ROI fue inmediato: el equipo ahorra m&aacute;s de 200 horas semanales.
-            </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)">DF</div>
-              <div>
-                <div class="testimonial-card__name">Diego F.</div>
-                <div class="testimonial-card__role">CTO &mdash; Retail Nacional</div>
-              </div>
-            </footer>
-          </article>
-
-          <article class="testimonial-card" role="listitem">
-            <div class="testimonial-card__stars" aria-label="5 de 5 estrellas">
-              &#9733;&#9733;&#9733;&#9733;&#9733;
-            </div>
-            <blockquote class="testimonial-card__quote">
-              El soporte en espa&ntilde;ol y la rapidez de implementaci&oacute;n marcaron la diferencia. En 3 semanas ya ten&iacute;amos resultados concretos.
-            </blockquote>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar" aria-hidden="true" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)">VR</div>
-              <div>
-                <div class="testimonial-card__name">Valentina R.</div>
-                <div class="testimonial-card__role">Directora de TI &mdash; Grupo Financiero</div>
-              </div>
-            </footer>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════ CTA FINAL ═══════════════════════════ -->
-    <section class="cta-section" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta-section__inner">
-          <h2 class="cta-section__title" id="cta-title">
-            &iquest;Listo para automatizar<br>tu empresa?
-          </h2>
-          <p class="cta-section__subtitle">
-            Comienza hoy y ve resultados en 3 semanas.
-            Nuestro equipo te acompa&ntilde;a en cada paso del proceso.
-          </p>
-          <a href="#" class="btn btn--white btn--lg">
-            Empezar gratis
-          </a>
-          <div class="cta-section__trust">
-            <span>Sin tarjeta de cr&eacute;dito</span>
-            <span>&middot;</span>
-            <span>Setup en 1 d&iacute;a</span>
-            <span>&middot;</span>
-            <span>Soporte en espa&ntilde;ol</span>
+          <div class="mockup__stat">
+            <div class="mockup__stat-label">ROI estimado</div>
+            <div class="mockup__stat-value">$4.2M</div>
+            <div class="mockup__stat-delta">+22% este mes</div>
           </div>
         </div>
+
+        <!-- Lista de automatizaciones activas -->
+        <div class="mockup__list-title">Automatizaciones activas</div>
+
+        <div class="mockup__item">
+          <div class="mockup__item-icon">🤖</div>
+          <div class="mockup__item-info">
+            <div class="mockup__item-name">Agente de atención a clientes</div>
+            <div class="mockup__item-meta">Última ejecución: hace 2 min</div>
+          </div>
+          <span class="mockup__badge mockup__badge--active">Activo</span>
+        </div>
+
+        <div class="mockup__item">
+          <div class="mockup__item-icon">🔗</div>
+          <div class="mockup__item-info">
+            <div class="mockup__item-name">Sincronización CRM → ERP</div>
+            <div class="mockup__item-meta">240 registros procesados hoy</div>
+          </div>
+          <span class="mockup__badge mockup__badge--running">Corriendo</span>
+        </div>
+
+        <div class="mockup__item">
+          <div class="mockup__item-icon">📊</div>
+          <div class="mockup__item-info">
+            <div class="mockup__item-name">Reporte semanal de ventas</div>
+            <div class="mockup__item-meta">Programado para viernes 08:00</div>
+          </div>
+          <span class="mockup__badge mockup__badge--paused">En espera</span>
+        </div>
+
+        <!-- Barras de progreso -->
+        <div class="mockup__progress-row">
+          <div class="mockup__progress-label">Motor de IA</div>
+          <div class="mockup__progress-bar"><div class="mockup__progress-fill" style="width:87%"></div></div>
+          <div class="mockup__progress-pct">87%</div>
+        </div>
+        <div class="mockup__progress-row">
+          <div class="mockup__progress-label">Integraciones</div>
+          <div class="mockup__progress-bar"><div class="mockup__progress-fill" style="width:94%"></div></div>
+          <div class="mockup__progress-pct">94%</div>
+        </div>
+
       </div>
-    </section>
+    </div>
 
-  </main>
+  </section>
 
 
-  <!-- ════════════════════════════ FOOTER ════════════════════════════ -->
-  <footer class="footer" id="empresa" role="contentinfo">
+  <!-- ── SOCIAL PROOF ───────────────────────────────────────── -->
+  <section class="social-proof" aria-labelledby="sp-label">
     <div class="container">
+      <p class="social-proof__label" id="sp-label">Empresas que confían en ProyectosIA</p>
+      <div class="social-proof__logos" role="list">
+        <span class="social-proof__logo" role="listitem">Falabella</span>
+        <span class="social-proof__sep" aria-hidden="true">·</span>
+        <span class="social-proof__logo" role="listitem">Copec</span>
+        <span class="social-proof__sep" aria-hidden="true">·</span>
+        <span class="social-proof__logo" role="listitem">Sodimac</span>
+        <span class="social-proof__sep" aria-hidden="true">·</span>
+        <span class="social-proof__logo" role="listitem">BancoEstado</span>
+        <span class="social-proof__sep" aria-hidden="true">·</span>
+        <span class="social-proof__logo" role="listitem">Entel</span>
+        <span class="social-proof__sep" aria-hidden="true">·</span>
+        <span class="social-proof__logo" role="listitem">CMR</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── PRODUCTOS / FEATURES ──────────────────────────────── -->
+  <section class="features" id="productos" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <div class="section-label" aria-label="Sección Productos">⚡ Productos</div>
+        <h2 class="section-title" id="features-title">
+          Todo lo que necesitas para<br>
+          <em>automatizar con IA</em>
+        </h2>
+        <p class="section-subtitle">
+          Un ecosistema integrado de herramientas diseñadas para que tu empresa opere de forma más inteligente.
+        </p>
+      </div>
+
+      <div class="features__grid">
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">🤖</div>
+          <h3 class="feature-card__title">Agentes de IA</h3>
+          <p class="feature-card__desc">
+            Agentes inteligentes que razonan, aprenden y actúan de forma autónoma en tus procesos de negocio, disponibles 24/7.
+          </p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">🔗</div>
+          <h3 class="feature-card__title">200+ Integraciones</h3>
+          <p class="feature-card__desc">
+            Conecta tus sistemas existentes — CRM, ERP, e-commerce, bases de datos — sin escribir una sola línea de código.
+          </p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">⚡</div>
+          <h3 class="feature-card__title">Flujos sin código</h3>
+          <p class="feature-card__desc">
+            Diseña automatizaciones complejas con nuestro editor visual. Arrastra, conecta y despliega en minutos.
+          </p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">📊</div>
+          <h3 class="feature-card__title">Analytics de ROI</h3>
+          <p class="feature-card__desc">
+            Visualiza en tiempo real el impacto de cada automatización: tiempo ahorrado, costos reducidos y resultados generados.
+          </p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">🔒</div>
+          <h3 class="feature-card__title">Seguridad Enterprise</h3>
+          <p class="feature-card__desc">
+            SSO, cifrado en tránsito y en reposo, auditoría completa y cumplimiento con normativas locales e internacionales.
+          </p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon" aria-hidden="true">🌐</div>
+          <h3 class="feature-card__title">API Pública</h3>
+          <p class="feature-card__desc">
+            Integra ProyectosIA directamente en tus aplicaciones con nuestra API REST documentada y SDKs para los principales lenguajes.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── PRICING ────────────────────────────────────────────── -->
+  <section class="pricing" id="precios" aria-labelledby="pricing-title">
+    <div class="container">
+      <div class="section-header text-center" data-reveal>
+        <div class="section-label" style="margin-inline: auto;">💎 Planes</div>
+        <h2 class="section-title" id="pricing-title">
+          Elige el plan para tu empresa
+        </h2>
+        <p class="section-subtitle" style="margin-inline: auto;">
+          Sin permanencias ni costos ocultos. Cambia o cancela cuando quieras.
+        </p>
+      </div>
+
+      <div class="pricing__grid">
+
+        <!-- Starter -->
+        <div class="pricing-card" data-reveal>
+          <div class="pricing-card__tier">Starter</div>
+          <div class="pricing-card__name">Arranque</div>
+          <p class="pricing-card__desc">Para equipos que empiezan a automatizar sus primeros procesos.</p>
+          <div class="pricing-card__price">
+            <span class="pricing-card__currency">$</span>
+            <span class="pricing-card__amount">49.990</span>
+            <span class="pricing-card__period">/mes</span>
+          </div>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features" aria-label="Funciones incluidas en Starter">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Hasta 10 automatizaciones activas
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              50+ integraciones disponibles
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              1 agente de IA incluido
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Panel de Analytics básico
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Soporte por email
+            </li>
+          </ul>
+          <a href="#" class="pricing-card__btn pricing-card__btn--ghost">
+            Comenzar gratis ›
+          </a>
+        </div>
+
+        <!-- Business — destacado -->
+        <div class="pricing-card pricing-card--featured" data-reveal aria-label="Plan Business, el más popular">
+          <div class="pricing-card__popular" aria-label="Plan más popular">⭐ MÁS POPULAR</div>
+          <div class="pricing-card__tier">Business</div>
+          <div class="pricing-card__name">Crecimiento</div>
+          <p class="pricing-card__desc">Para empresas que quieren automatizar a escala con inteligencia artificial.</p>
+          <div class="pricing-card__price">
+            <span class="pricing-card__currency">$</span>
+            <span class="pricing-card__amount">129.990</span>
+            <span class="pricing-card__period">/mes</span>
+          </div>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features" aria-label="Funciones incluidas en Business">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Automatizaciones ilimitadas
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              200+ integraciones completas
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              10 agentes de IA configurables
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Analytics avanzado con ROI
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              API pública + webhooks
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Soporte prioritario 24/5
+            </li>
+          </ul>
+          <a href="#" class="pricing-card__btn pricing-card__btn--primary">
+            Quiero este plan ›
+          </a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card" data-reveal>
+          <div class="pricing-card__tier">Enterprise</div>
+          <div class="pricing-card__name">Corporativo</div>
+          <p class="pricing-card__desc">Para grandes organizaciones con necesidades de automatización críticas.</p>
+          <div class="pricing-card__price" style="align-items: center; padding-bottom: 8px;">
+            <span class="pricing-card__amount--custom">Cotización<br>personalizada</span>
+          </div>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features" aria-label="Funciones incluidas en Enterprise">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Todo lo de Business, más:
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Agentes de IA ilimitados
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Infraestructura dedicada
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              SSO + gestión de roles avanzada
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              SLA garantizado 99.9%
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check" aria-hidden="true">✓</span>
+              Gerente de cuenta dedicado
+            </li>
+          </ul>
+          <a href="#footer" class="pricing-card__btn pricing-card__btn--ghost">
+            Hablar con ventas ›
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CTA FINAL ──────────────────────────────────────────── -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <!-- Círculos decorativos de fondo -->
+    <div class="cta-section__bg" aria-hidden="true">
+      <div class="cta-circle" style="width:400px;height:400px;top:-200px;right:-100px;opacity:.15;"></div>
+      <div class="cta-circle" style="width:300px;height:300px;bottom:-150px;left:-80px;opacity:.12;"></div>
+      <div class="cta-circle" style="width:200px;height:200px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.08;"></div>
+    </div>
+    <div class="container cta-section__inner">
+      <h2 class="cta-section__title" id="cta-title" data-reveal>
+        ¿Listo para automatizar<br>tu empresa?
+      </h2>
+      <p class="cta-section__subtitle" data-reveal>
+        Únete a las empresas que ya están usando ProyectosIA para ahorrar tiempo, reducir costos y crecer más rápido.
+      </p>
+      <a href="#precios" class="cta-section__btn" data-reveal>
+        Comenzar ahora ›
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+
       <div class="footer__grid">
 
-        <!-- Brand -->
+        <!-- Columna 1 — Marca -->
         <div>
-          <div class="footer__logo">
-            <div class="footer__logo-dot"></div>
-            ProyectosIA
-          </div>
+          <div class="footer__brand-icon" aria-hidden="true">⚡</div>
+          <div class="footer__brand-name">ProyectosIA</div>
           <p class="footer__brand-desc">
-            Automatizamos procesos, conectamos sistemas y ponemos la IA a trabajar por tu empresa. Sin freelancers eternos.
+            Automatizamos procesos, conectamos sistemas y ponemos IA a trabajar por tu empresa. Sin freelancers eternos. Resultados en semanas.
           </p>
-          <div class="footer__socials" aria-label="Redes sociales">
-            <a href="#" class="footer__social" aria-label="Twitter / X">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="footer__social" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="#" class="footer__social" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            </a>
+          <div class="footer__social" aria-label="Redes sociales">
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter / X">𝕏</a>
+            <a href="#" class="footer__social-link" aria-label="GitHub">⌥</a>
           </div>
         </div>
 
-        <!-- Producto -->
+        <!-- Columna 2 — Producto -->
         <div>
-          <h3 class="footer__col-title">Producto</h3>
-          <ul class="footer__links" role="list">
-            <li><a href="#">Caracter&iacute;sticas</a></li>
-            <li><a href="#">Integraciones</a></li>
-            <li><a href="#precios">Precios</a></li>
-            <li><a href="#">Changelog</a></li>
+          <div class="footer__col-title">Producto</div>
+          <ul class="footer__col-links" aria-label="Links de Producto">
+            <li><a href="#productos" class="footer__col-link">Agentes de IA</a></li>
+            <li><a href="#productos" class="footer__col-link">Integraciones</a></li>
+            <li><a href="#productos" class="footer__col-link">Flujos sin código</a></li>
+            <li><a href="#productos" class="footer__col-link">Analytics</a></li>
+            <li><a href="#productos" class="footer__col-link">API Pública</a></li>
           </ul>
         </div>
 
-        <!-- Empresa -->
+        <!-- Columna 3 — Empresa -->
         <div>
-          <h3 class="footer__col-title">Empresa</h3>
-          <ul class="footer__links" role="list">
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Carreras</a></li>
-            <li><a href="#">Contacto</a></li>
+          <div class="footer__col-title">Empresa</div>
+          <ul class="footer__col-links" aria-label="Links de Empresa">
+            <li><a href="#" class="footer__col-link">Sobre nosotros</a></li>
+            <li><a href="#" class="footer__col-link">Blog</a></li>
+            <li><a href="#" class="footer__col-link">Casos de éxito</a></li>
+            <li><a href="#" class="footer__col-link">Prensa</a></li>
+            <li><a href="#" class="footer__col-link">Trabaja con nosotros</a></li>
           </ul>
         </div>
 
-        <!-- Legal -->
+        <!-- Columna 4 — Soporte -->
         <div>
-          <h3 class="footer__col-title">Legal</h3>
-          <ul class="footer__links" role="list">
-            <li><a href="#">Privacidad</a></li>
-            <li><a href="#">T&eacute;rminos de uso</a></li>
-            <li><a href="#">Seguridad</a></li>
-            <li><a href="#">Cookies</a></li>
+          <div class="footer__col-title">Soporte</div>
+          <ul class="footer__col-links" aria-label="Links de Soporte">
+            <li><a href="#" class="footer__col-link">Centro de ayuda</a></li>
+            <li><a href="#" class="footer__col-link">Documentación</a></li>
+            <li><a href="#" class="footer__col-link">Estado del sistema</a></li>
+            <li><a href="#" class="footer__col-link">Comunidad</a></li>
+            <li><a href="#footer" class="footer__col-link">Contacto</a></li>
           </ul>
         </div>
 
       </div>
 
-      <div class="footer__divider"></div>
-
+      <!-- Bottom bar -->
       <div class="footer__bottom">
-        <span>&copy; 2026 ProyectosIA SpA</span>
-        <span>&middot;</span>
-        <span>Hecho en Chile &#x1F1E8;&#x1F1F1;</span>
-        <span>&middot;</span>
-        <span>RUT 77.123.456-7</span>
+        <p class="footer__copy">
+          © 2026 ProyectosIA · Hecho en Chile 🇨🇱 con IA
+        </p>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__bottom-link">Privacidad</a>
+          <a href="#" class="footer__bottom-link">Términos</a>
+          <a href="#" class="footer__bottom-link">Cookies</a>
+        </div>
       </div>
 
     </div>
   </footer>
+  </main>
 
 
-  <!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
+  <!-- ── JavaScript mínimo ──────────────────────────────────── -->
   <script>
-    // ── Navbar scroll ──────────────────────────────────────────
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 12) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    }, { passive: true });
+    // Hamburger menu
+    (function () {
+      var burger  = document.getElementById('navBurger');
+      var mobileMenu = document.getElementById('navMobile');
 
-    // ── Hamburger toggle ───────────────────────────────────────
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', function() {
-      const isOpen = mobileMenu.classList.contains('open');
-      mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('active');
-      hamburger.setAttribute('aria-expanded', String(!isOpen));
-      hamburger.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
-    });
-
-    function closeMobile() {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Abrir menú');
-    }
-
-    // Close mobile on outside click
-    document.addEventListener('click', function(e) {
-      if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMobile();
-      }
-    });
-
-    // Close on resize to desktop
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 768) {
-        closeMobile();
-      }
-    }, { passive: true });
-
-    // ── Smooth scroll for anchor links ─────────────────────────
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: top, behavior: 'smooth' });
-        }
+      burger.addEventListener('click', function () {
+        var isOpen = mobileMenu.classList.toggle('is-open');
+        burger.classList.toggle('is-open', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
       });
-    });
+
+      // Cerrar al hacer click en un link del menú móvil
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.remove('is-open');
+          burger.classList.remove('is-open');
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Scroll reveal con IntersectionObserver
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var items = document.querySelectorAll('[data-reveal]');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+
+    // Navbar shadow al hacer scroll
+    (function () {
+      var nav = document.querySelector('.nav');
+      window.addEventListener('scroll', function () {
+        nav.style.boxShadow = window.scrollY > 8
+          ? '0 2px 16px rgba(0,0,0,0.08)'
+          : 'none';
+      }, { passive: true });
+    })();
   </script>
 
 </body>
